@@ -131,6 +131,18 @@ export function Footer() {
             <Link href="/get-a-quote" className="hover:text-white">Get a Quote</Link>
           </div>
         </div>
+        <div className="mt-4 text-xs text-cream/40">
+          Powered by{" "}
+          <a
+            href="https://adimize.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline decoration-cream/30 underline-offset-2 hover:text-white"
+          >
+            Adimize
+          </a>
+          {" "}— Local Service Digital Marketing
+        </div>
       </div>
     </footer>
   );

@@ -35,7 +35,6 @@ export const NAV_MAIN: NavItem[] = [
   { href: "/services", label: "Services", hasMenu: true },
   { href: "/locations", label: "Service Area" },
   { href: "/pricing", label: "Pricing" },
-  { href: "/contact", label: "Contact" },
 ];
 
 export const NAV_MOBILE: NavItem[] = [
@@ -49,5 +48,4 @@ export const NAV_MOBILE: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/why-choose-us", label: "Why Choose Us" },
   { href: "/faq", label: "FAQ" },
-  { href: "/contact", label: "Contact" },
 ];
