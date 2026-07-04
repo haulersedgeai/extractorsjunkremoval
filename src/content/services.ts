@@ -72,7 +72,7 @@ export const SERVICES: Service[] = [
     relatedSlugs: ["furniture-removal", "appliance-removal", "mattress-removal", "garage-cleanouts", "construction-debris-removal", "commercial-junk-removal"],
     faq: [
       { q: "How fast can you pick up?", a: "Most days we're able to be at your door the same afternoon or the next morning. Text us a photo for the quickest quote." },
-      { q: "What does junk removal cost in Cypress?", a: "Pricing is by volume — what fits in the truck. Single items typically start around $99, a quarter-trailer around $199, a full trailer in the $549–$699 range. We always confirm before we load." },
+      { q: "What does junk removal cost in Cypress?", a: "Pricing is by volume — what fits in the truck. Single items typically start around $99, a quarter-trailer around $199, a full trailer from $649. We always confirm before we load." },
       { q: "Do I have to drag it to the curb?", a: "Nope. We're full-service. Upstairs bedroom, backyard, garage, attic, behind the shed — we pull it from wherever it sits." },
       { q: "Where does the junk actually go?", a: "Anything usable gets donated to local Orange County charities. Metal and appliances go to recycling. The rest goes to permitted county transfer stations — never illegal dumps." },
     ],

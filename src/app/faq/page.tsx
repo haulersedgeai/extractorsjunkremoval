@@ -23,7 +23,7 @@ const FAQS = [
   {
     section: "Pricing & Payment",
     items: [
-      { q: "How much does junk removal cost?", a: "Pricing depends on volume, type of items, and labor required. Single items typically start around $99, a quarter-trailer around $199, a full trailer in the $549–$699 range. We provide free upfront quotes before any work begins so there are no surprises." },
+      { q: "How much does junk removal cost?", a: "Pricing depends on volume, type of items, and labor required. Single items typically start around $99, a quarter-trailer around $199, a full trailer from $649. We provide free upfront quotes before any work begins so there are no surprises." },
       { q: "Are there hidden fees?", a: "No. Disposal, recycling, fuel, and labor are all included in your quote. The number we say is the number you pay." },
       { q: "What payment methods do you accept?", a: "Cash, credit/debit cards, and digital payments. Payment is due once the job is complete." },
       { q: "Do you charge for quotes?", a: "Never. All quotes are free and no-obligation." },

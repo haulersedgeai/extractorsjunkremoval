@@ -8,7 +8,7 @@ import { CheckCircle2 } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Pricing | Junk Removal Rates Cypress, Anaheim, Long Beach | Extractors",
-  description: "Transparent, upfront pricing for junk removal across Orange County and LA County. By truck volume, not by item. Most jobs $99–$699.",
+  description: "Transparent, upfront pricing for junk removal across Orange County and LA County. By truck volume, not by item. Most jobs $99–$649.",
   alternates: { canonical: "/pricing" },
 };
 
