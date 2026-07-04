@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { CheckCircle2, ChevronRight } from "lucide-react";
-import { SERVICES, getService, SERVICE_CATEGORIES, getServicesByCategory } from "@/content/services";
+import { SERVICES, getService, SERVICE_CATEGORIES, getServicesByCategory, type Service } from "@/content/services";
 import { SITE } from "@/lib/site";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Container";
@@ -12,6 +13,27 @@ import { CTASection } from "@/components/sections/CTASection";
 import { RelatedServices } from "@/components/sections/RelatedServices";
 import { FaqList } from "@/components/sections/FaqList";
 import { ServiceArea } from "@/components/sections/ServiceArea";
+
+const SLUG_IMAGE: Record<string, { src: string; alt: string }> = {
+  "hot-tub-removal": { src: "/images/demo-structure.png", alt: "Hot tub cut down and staged for haul-away in an Orange County backyard" },
+  "construction-debris-removal": { src: "/images/dumpsters.png", alt: "Dumpster trailer parked at a construction site loaded with renovation debris" },
+  "dumpster-trailer-rental": { src: "/images/dumpsters.png", alt: "Extractors Junk Removal dumpster trailer dropped for a driveway rental" },
+  "furniture-removal": { src: "/images/job-1.jpeg", alt: "Couch and mattress loaded out of a Long Beach apartment" },
+  "mattress-removal": { src: "/images/job-4.jpeg", alt: "Mattress and box spring loaded into the Extractors dump trailer" },
+  "appliance-removal": { src: "/images/job-5.jpeg", alt: "Old refrigerator and washer loaded onto the trailer for haul-away" },
+  "estate-cleanouts": { src: "/images/job-3.jpeg", alt: "Estate cleanout in progress — trailer loaded from a Cerritos home" },
+};
+
+const CATEGORY_IMAGE: Record<Service["category"], { src: string; alt: string }> = {
+  "junk-removal": { src: "/images/truck-1.png", alt: "Extractors Junk Removal truck and trailer parked on Lincoln Ave in Cypress" },
+  "clean-outs": { src: "/images/cleanout.png", alt: "Garage cleanout in progress — a full load staged for the dump trailer" },
+  "demolitions": { src: "/images/demolitions.png", alt: "Light demolition job — old shed and fence torn down and loaded for haul-away" },
+  "commercial": { src: "/images/dumpsters.png", alt: "Dumpster trailer dropped for a commercial job site in Orange County" },
+};
+
+function getServiceImage(svc: Service) {
+  return SLUG_IMAGE[svc.slug] ?? CATEGORY_IMAGE[svc.category];
+}
 
 export function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -36,6 +58,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const category = SERVICE_CATEGORIES[svc.category];
   const siblings = svc.isHub ? getServicesByCategory(svc.category) : [];
+  const img = getServiceImage(svc);
 
   return (
     <>
@@ -60,6 +83,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="lg:col-span-2">
             <h2 className="font-display text-2xl font-extrabold text-ink sm:text-3xl">{svc.title}</h2>
             <p className="mt-4 whitespace-pre-line text-lg text-ink/80">{svc.intro}</p>
+
+            <figure className="relative mt-8 aspect-[16/9] overflow-hidden rounded-2xl border border-ink/10 bg-cream">
+              <Image
+                src={img.src}
+                alt={img.alt}
+                fill
+                sizes="(min-width: 1024px) 60vw, 100vw"
+                className="object-cover"
+                loading="lazy"
+              />
+            </figure>
 
             <h3 className="mt-10 font-display text-xl font-extrabold text-ink">What&apos;s Included</h3>
             <ul className="mt-4 space-y-2">

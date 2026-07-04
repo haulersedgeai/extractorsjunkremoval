@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { ServicesGrid } from "@/components/sections/ServicesGrid";
 import { WhyUs } from "@/components/sections/WhyUs";
@@ -32,6 +33,8 @@ export default function HomePage() {
         eyebrow="Cypress, CA · Family-Owned"
         title="Junk Removal, Cleanouts & Light Demolition Across OC and LA County"
         subtitle="Same-day pickup, upfront pricing, real five-star Google reviews. We haul anything, anywhere from Cypress to Anaheim, Long Beach, and the cities in between."
+        backgroundImage="/images/truck-2.png"
+        backgroundAlt="Extractors Junk Removal dump trailer loaded with a haul in Cypress, California"
       />
 
       <ServicesGrid />
@@ -61,7 +64,13 @@ export default function HomePage() {
             </div>
           </div>
           <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-ink to-brand/70 p-8 text-white shadow-xl overflow-hidden">
-            <div className="absolute inset-0 opacity-25 bg-cover bg-center" style={{ backgroundImage: "url('/images/truck-1.png')" }} />
+            <Image
+              src="/images/truck-1.png"
+              alt="Extractors Junk Removal truck and crew on a Cypress job"
+              fill
+              sizes="(min-width: 1024px) 40vw, 100vw"
+              className="object-cover opacity-30"
+            />
             <div className="relative flex h-full flex-col justify-end">
               <div className="text-5xl font-extrabold">5.0</div>
               <div className="text-lg font-bold">Average Google rating</div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
@@ -28,11 +29,22 @@ export default function AboutPage() {
         title="Family-Owned in Cypress, Built on Word of Mouth"
         subtitle="Jesse started Extractors Junk Removal helping neighbors clear garages and haul old furniture. That grew into a full junk removal and light demolition crew trusted across OC and LA County."
         showRating={false}
+        backgroundImage="/images/demolitions.png"
+        backgroundAlt="Extractors Junk Removal crew on a demolition job in Orange County"
       />
 
       <Section>
         <div className="grid gap-12 lg:grid-cols-3 lg:gap-16">
           <div className="lg:col-span-2 space-y-6 text-lg text-ink/80">
+            <figure className="relative aspect-[16/9] overflow-hidden rounded-2xl border border-ink/10">
+              <Image
+                src="/images/truck-1.png"
+                alt="Jesse and crew standing beside the Extractors Junk Removal trailer in Cypress, CA"
+                fill
+                sizes="(min-width: 1024px) 55vw, 100vw"
+                className="object-cover object-top"
+              />
+            </figure>
             <p>
               Extractors Junk Removal is a small, family-owned crew based on Lincoln Avenue in Cypress, CA. We started out doing one job at a time for neighbors and friends, and that grew into a full junk removal and light demolition operation working across Orange County and Los Angeles County.
             </p>
@@ -61,6 +73,24 @@ export default function AboutPage() {
               Get a Free Quote →
             </Link>
           </aside>
+        </div>
+      </Section>
+
+      <Section bg="cream">
+        <div className="mb-6">
+          <div className="text-sm font-bold uppercase tracking-wider text-brand">On the Job</div>
+          <h2 className="mt-1 font-display text-2xl font-extrabold text-ink sm:text-3xl">Recent work across OC & LA County</h2>
+        </div>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {[
+            { src: "/images/job-3.jpeg", alt: "Estate cleanout in Cerritos — Extractors Junk Removal loading a full trailer" },
+            { src: "/images/job-4.jpeg", alt: "Furniture haul on a Long Beach walk-up" },
+            { src: "/images/job-5.jpeg", alt: "Garage cleanout in Anaheim with the dump trailer loaded" },
+          ].map((p) => (
+            <figure key={p.src} className="relative aspect-[3/4] overflow-hidden rounded-2xl border border-ink/10 bg-white">
+              <Image src={p.src} alt={p.alt} fill sizes="(min-width: 1024px) 30vw, (min-width: 640px) 33vw, 100vw" className="object-cover" loading="lazy" />
+            </figure>
+          ))}
         </div>
       </Section>
 

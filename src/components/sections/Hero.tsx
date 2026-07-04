@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Star, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SITE } from "@/lib/site";
@@ -10,6 +11,8 @@ export function Hero({
   showRating = true,
   primaryHref = "/get-a-quote",
   primaryLabel = "Get a Free Quote",
+  backgroundImage,
+  backgroundAlt,
 }: {
   eyebrow?: string;
   title: string;
@@ -17,11 +20,30 @@ export function Hero({
   showRating?: boolean;
   primaryHref?: string;
   primaryLabel?: string;
+  backgroundImage?: string;
+  backgroundAlt?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-ink text-white">
-      <div className="absolute inset-0 bg-gradient-to-br from-ink via-ink to-brand/50" />
-      <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(0,132,255,0.35), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,180,0,0.18), transparent 40%)" }} />
+    <section className="relative overflow-hidden bg-ink text-white min-h-[520px] sm:min-h-[560px] lg:min-h-[620px]">
+      {backgroundImage ? (
+        <>
+          <Image
+            src={backgroundImage}
+            alt={backgroundAlt ?? ""}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/50" />
+          <div className="absolute inset-0 bg-ink/20" />
+        </>
+      ) : (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-br from-ink via-ink to-brand/50" />
+          <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "radial-gradient(circle at 20% 30%, rgba(0,132,255,0.35), transparent 40%), radial-gradient(circle at 80% 70%, rgba(255,180,0,0.18), transparent 40%)" }} />
+        </>
+      )}
       <div className="relative mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24">
         {eyebrow && (
           <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-accent ring-1 ring-white/15">
