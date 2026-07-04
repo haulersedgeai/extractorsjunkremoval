@@ -10,7 +10,7 @@ import { Process } from "@/components/sections/Process";
 import { WhyUs } from "@/components/sections/WhyUs";
 import { CTASection } from "@/components/sections/CTASection";
 import { RelatedServices } from "@/components/sections/RelatedServices";
-import { FaqAccordion } from "@/components/sections/FaqAccordion";
+import { FaqList } from "@/components/sections/FaqList";
 import { ServiceArea } from "@/components/sections/ServiceArea";
 
 export function generateStaticParams() {
@@ -113,7 +113,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <>
                 <h3 className="mt-12 font-display text-xl font-extrabold text-ink">Frequently Asked</h3>
                 <div className="mt-4">
-                  <FaqAccordion items={svc.faq} />
+                  <FaqList items={svc.faq} />
                 </div>
               </>
             )}
