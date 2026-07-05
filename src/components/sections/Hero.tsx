@@ -13,6 +13,7 @@ export function Hero({
   primaryLabel = "Get a Free Quote",
   backgroundImage,
   backgroundAlt,
+  backgroundPosition = "center",
 }: {
   eyebrow?: string;
   title: string;
@@ -22,6 +23,7 @@ export function Hero({
   primaryLabel?: string;
   backgroundImage?: string;
   backgroundAlt?: string;
+  backgroundPosition?: string;
 }) {
   return (
     <section className="relative overflow-hidden bg-ink text-white min-h-[520px] sm:min-h-[560px] lg:min-h-[620px]">
@@ -33,7 +35,8 @@ export function Hero({
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center"
+            className="object-cover"
+            style={{ objectPosition: backgroundPosition }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-ink/90 via-ink/70 to-ink/50" />
           <div className="absolute inset-0 bg-ink/20" />

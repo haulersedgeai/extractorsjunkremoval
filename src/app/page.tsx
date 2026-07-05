@@ -35,6 +35,7 @@ export default function HomePage() {
         subtitle="Same-day pickup, upfront pricing, real five-star Google reviews. We haul anything, anywhere from Cypress to Anaheim, Long Beach, and the cities in between."
         backgroundImage="/images/truck-2.png"
         backgroundAlt="Extractors Junk Removal dump trailer loaded with a haul in Cypress, California"
+        backgroundPosition="top"
       />
 
       <ServicesGrid />

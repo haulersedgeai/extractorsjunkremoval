@@ -1,4 +1,6 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { SITE } from "@/lib/site";
 
 export const alt = `${SITE.name} — Junk Removal, Cleanouts & Light Demolition`;
@@ -6,6 +8,9 @@ export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
 export default async function Image() {
+  const logoBytes = await readFile(join(process.cwd(), "public/images/logo.png"));
+  const logoSrc = `data:image/png;base64,${logoBytes.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -20,24 +25,15 @@ export default async function Image() {
           fontFamily: "system-ui, sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <div
-            style={{
-              width: 84,
-              height: 84,
-              borderRadius: 20,
-              background: "#FFB400",
-              color: "#0B1220",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: 52,
-              fontWeight: 900,
-              letterSpacing: -2,
-            }}
-          >
-            E
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 24 }}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={logoSrc}
+            alt=""
+            width={110}
+            height={110}
+            style={{ borderRadius: 20, background: "white", padding: 6 }}
+          />
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 44, fontWeight: 900, lineHeight: 1.05, letterSpacing: -1 }}>
               Extractors Junk Removal
