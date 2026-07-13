@@ -11,7 +11,7 @@ import { Section } from "@/components/ui/Container";
 import { CheckCircle2 } from "lucide-react";
 
 const PROCESS = [
-  { title: "Send a photo or list", body: "Text or upload pictures of what you need gone. Quote back the same day." },
+  { title: "Send a photo or list", body: "Text us pictures of what you need gone. Quote back the same day." },
   { title: "Pick a time", body: "Same-day and next-day windows. We text when we're on the way." },
   { title: "We do the work", body: "Two-person uniformed crew. We lift, load, sweep, and haul." },
   { title: "Pay when done", body: "Upfront price, no surprises. Cash, card, or digital." },

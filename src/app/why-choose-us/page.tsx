@@ -78,7 +78,7 @@ export default function WhyChooseUsPage() {
       </Section>
 
       <Process steps={[
-        { title: "Send a photo or list", body: "Text or upload pictures. Same-day quote." },
+        { title: "Send a photo or list", body: "Text us pictures. Same-day quote." },
         { title: "Pick a time", body: "Same-day and next-day windows." },
         { title: "We do the work", body: "Lift, load, sweep, haul." },
         { title: "Pay when done", body: "Upfront price, payment when you&apos;re happy." },

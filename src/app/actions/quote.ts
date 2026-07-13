@@ -6,9 +6,6 @@ import path from "path";
 import type { QuoteState } from "@/lib/quote-options";
 import { SITE } from "@/lib/site";
 
-const MAX_FILE_SIZE = 8 * 1024 * 1024;
-const ALLOWED_MIME = ["image/jpeg", "image/png", "image/webp", "image/heic", "image/heif"];
-
 export async function submitQuote(_prev: QuoteState, formData: FormData): Promise<QuoteState> {
   try {
     const name = String(formData.get("name") || "").trim();
@@ -24,21 +21,6 @@ export async function submitQuote(_prev: QuoteState, formData: FormData): Promis
       return { ok: false, message: "Please include your name, a way to reach you, and a few details." };
     }
 
-    const attachments: { filename: string; content: Buffer }[] = [];
-    const photos = formData.getAll("photos");
-    for (const p of photos) {
-      if (!(p instanceof File)) continue;
-      if (!p.size) continue;
-      if (p.size > MAX_FILE_SIZE) {
-        return { ok: false, message: `Photo "${p.name}" is too large (max 8MB).` };
-      }
-      if (p.type && !ALLOWED_MIME.includes(p.type)) {
-        return { ok: false, message: `Photo "${p.name}" is not a supported image type.` };
-      }
-      const buf = Buffer.from(await p.arrayBuffer());
-      attachments.push({ filename: p.name || "photo.jpg", content: buf });
-    }
-
     const subject = `New Quote Request — ${service || "General"} — ${name}`;
     const html = `
       <h2>New Quote Request from extractorsjunkremoval.com</h2>
@@ -49,7 +31,6 @@ export async function submitQuote(_prev: QuoteState, formData: FormData): Promis
       <p><strong>ZIP:</strong> ${escapeHtml(zip || "(none provided)")}</p>
       <p><strong>Details:</strong></p>
       <pre style="font-family:inherit;white-space:pre-wrap">${escapeHtml(message)}</pre>
-      <p><strong>Photos attached:</strong> ${attachments.length}</p>
     `;
 
     const to = process.env.QUOTE_TO_EMAIL || SITE.email;
@@ -64,14 +45,13 @@ export async function submitQuote(_prev: QuoteState, formData: FormData): Promis
         replyTo: email || undefined,
         subject,
         html,
-        attachments: attachments.map((a) => ({ filename: a.filename, content: a.content })),
       });
       if (error) {
-        await logFallback({ name, phone, email, service, zip, message, photoCount: attachments.length, error: String(error) });
+        await logFallback({ name, phone, email, service, zip, message, error: String(error) });
         return { ok: false, message: `Something went wrong sending your message. Please call us at ${SITE.phoneDisplay}.` };
       }
     } else {
-      await logFallback({ name, phone, email, service, zip, message, photoCount: attachments.length });
+      await logFallback({ name, phone, email, service, zip, message });
     }
 
     return { ok: true, message: "Got it — we'll text or call you within an hour during business hours." };

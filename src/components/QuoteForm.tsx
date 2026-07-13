@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { submitQuote } from "@/app/actions/quote";
 import { QUOTE_SERVICES, type QuoteState } from "@/lib/quote-options";
 import { SITE } from "@/lib/site";
-import { CheckCircle2, AlertCircle, Upload } from "lucide-react";
+import { CheckCircle2, AlertCircle } from "lucide-react";
 
 const INITIAL: QuoteState = { ok: false };
 
@@ -70,15 +70,6 @@ export function QuoteForm() {
       <div>
         <Label htmlFor="message">Tell us what you need *</Label>
         <Textarea id="message" name="message" required placeholder="Old couch, mattress, and a treadmill in a 2nd-floor apartment. Need it gone this week." />
-      </div>
-
-      <div>
-        <Label htmlFor="photos">Photos (optional — faster quote)</Label>
-        <label className="flex cursor-pointer items-center justify-center gap-2 rounded-md border-2 border-dashed border-ink/20 bg-cream px-4 py-6 text-sm font-semibold text-ink/70 transition-colors hover:border-brand hover:text-brand">
-          <Upload className="h-5 w-5" />
-          <span>Click to upload (up to 5 images, 8MB each)</span>
-          <input id="photos" name="photos" type="file" accept="image/*" multiple className="hidden" />
-        </label>
       </div>
 
       {state.message && !state.ok && (

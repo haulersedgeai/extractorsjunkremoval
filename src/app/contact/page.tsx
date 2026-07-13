@@ -5,6 +5,7 @@ import { Section } from "@/components/ui/Container";
 import { CTASection } from "@/components/sections/CTASection";
 import { SITE } from "@/lib/site";
 import { QuoteForm } from "@/components/QuoteForm";
+import { TextPhotosCard } from "@/components/TextPhotosCard";
 
 export const metadata: Metadata = {
   title: "Contact Extractors Junk Removal | Cypress, Anaheim, Long Beach",
@@ -82,6 +83,7 @@ export default function ContactPage() {
                 <QuoteForm />
               </div>
             </div>
+            <TextPhotosCard />
           </div>
         </div>
       </Section>

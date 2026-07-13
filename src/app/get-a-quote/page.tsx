@@ -4,10 +4,11 @@ import { Hero } from "@/components/sections/Hero";
 import { Section } from "@/components/ui/Container";
 import { SITE } from "@/lib/site";
 import { QuoteForm } from "@/components/QuoteForm";
+import { TextPhotosCard } from "@/components/TextPhotosCard";
 
 export const metadata: Metadata = {
   title: "Get a Free Quote | Junk Removal OC & LA County | Extractors",
-  description: "Get a free same-day quote for junk removal, cleanouts, or light demolition across Cypress, Anaheim, Long Beach, and OC. Photo upload supported.",
+  description: "Get a free same-day quote for junk removal, cleanouts, or light demolition across Cypress, Anaheim, Long Beach, and OC. Text us a photo for the fastest quote.",
   alternates: { canonical: "/get-a-quote" },
 };
 
@@ -52,12 +53,15 @@ export default function GetAQuotePage() {
               </ul>
             </div>
           </aside>
-          <div className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm sm:p-8">
-            <h2 className="font-display text-2xl font-extrabold text-ink">Quote Request Form</h2>
-            <p className="mt-2 text-ink/70">Tell us what you need gone. Photo upload supported.</p>
-            <div className="mt-6">
-              <QuoteForm />
+          <div>
+            <div className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm sm:p-8">
+              <h2 className="font-display text-2xl font-extrabold text-ink">Quote Request Form</h2>
+              <p className="mt-2 text-ink/70">Tell us what you need gone and we&apos;ll respond same-day.</p>
+              <div className="mt-6">
+                <QuoteForm />
+              </div>
             </div>
+            <TextPhotosCard />
           </div>
         </div>
       </Section>
